@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
 /* box sizing property so that if we add any padding to an ::-webkit-progress-inner-element
 or border it doesnt change the width  */
 * {
@@ -13,12 +13,70 @@ or border it doesnt change the width  */
 */
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Muli", sans-serif;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   overflow: hidden;
   margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 90vh;
+}
+
+/* 
+-background-size to perserve the rounded conrers on large screens
+- border-radius 50px makes them rounded 
+ */
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+  font: size 24px;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+/* 
+-if the panel div also has anactive class, it we will change
+the flex from zero to 5 
+*/
+.panel.active {
+  flex: 5;
+}
+
+/* if the panel is active*/
+.panel.active h3 {
+  opacity: 1;
+}
+
+/* 
+-if the screen is really small
+-nth == puesudo selector removes the last two panels 
+ */
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
 }
